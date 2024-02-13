@@ -205,9 +205,11 @@ class Body {
                     ).readAsArrayBuffer();
                     const typedArray = new Uint8Array(arrayBuffer);
 
-                    typedArray.forEach((chunk) => {
-                        controller.enqueue(chunk);
-                    });
+                    // typedArray.forEach((chunk) => {
+                    //     controller.enqueue(chunk);
+                    // });
+                    // Stream array instead of individual chunks
+                    controller.enqueue(typedArray);
 
                     controller.close();
                 },
